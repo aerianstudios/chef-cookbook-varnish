@@ -56,11 +56,11 @@ class Chef
         package new_resource.package_name do
           action 'install'
           notifies 'enable', "service[#{new_resource.package_name}]", 'delayed'
-          notifies 'restart', "service[#{new_resource.package_name}]", 'delayed'
+          #notifies 'restart', "service[#{new_resource.package_name}]", 'delayed'
         end
 
         service 'varnish' do
-          supports restart: false, reload: true
+          supports restart: false, reload: false
           action 'nothing'
         end
       end
