@@ -60,7 +60,7 @@ class Chef
         end
 
         service 'varnish' do
-          supports restart: true, reload: true
+          supports restart: false, reload: true
           action 'nothing'
         end
       end
