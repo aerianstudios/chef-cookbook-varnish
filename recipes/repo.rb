@@ -19,10 +19,12 @@ case node['platform_family']
 when 'debian'
   include_recipe 'apt'
   apt_repository 'varnish-cache' do
-    uri "http://repo.varnish-cache.org/#{node['platform']}"
+    #uri "http://repo.varnish-cache.org/#{node['platform']}"
+    uri "https://packagecloud.io/varnishcache/varnish21/"
     distribution node['lsb']['codename']
     components ["varnish-#{node['varnish']['version']}"]
-    key "http://repo.varnish-cache.org/#{node['platform']}/GPG-key.txt"
+    #key "http://repo.varnish-cache.org/#{node['platform']}/GPG-key.txt"
+    key "https://packagecloud.io/varnishcache/varnish21/gpgkey"
     deb_src true
     notifies 'nothing', 'execute[apt-get update]', 'immediately'
   end
